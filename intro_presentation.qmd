@@ -1,0 +1,277 @@
+---
+title: "Introduction to Medical Statistics"
+author: "Anna-Bettina Haidich<br>Konstantinos Bougioukas<br>Medical Statistics<br>October 10, 2022"
+format: 
+  revealjs:
+    navigation-mode: vertical
+    theme: moon
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+
+## Online textbook of the course {.scrollable}
+
+The online textbook includes two Parts, "Medical Statistics" and "Jamovi LAB". For each theoretical chapter (e.g., ["Introduction"](https://bougioukas-medstatsjamovi.netlify.app/introduction.html). ) in first part there is a practical lab with Jamovi in the second part (e.g., ["Lab I:Introduction to Jamovi"](https://bougioukas-medstatsjamovi.netlify.app/lab1.html).
+
+![](images_slides/cover2.png){fig-align="right"}
+
+## Objectives of this lecture
+
+-   Distinguish descriptive from inferential statistics.
+
+-   Explain the difference between qualitative and quantitative data.
+
+-   Understand the difference between dependent and independent variables.
+
+-   Identify the type of any given variable (nominal/ordinal/discrete/contnuous).
+
+## Main branches of Statistics {.smaller .scrollable}
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| fig-align: left
+#| out-width: "90%"
+#| echo: false
+#| output-location: column
+
+knitr::include_graphics(here::here("images_slides", "branches3.png"))
+```
+:::
+
+::: {.column width="30%"}
+
+Statistics is an empirical method for collecting, organizing, summarizing, and presenting data, and for making inferences about the population from which the data are drawn.
+
+-   Descriptive statistics aim at [summarizing]{style="color:#FF4444"} large quantities of data by a few numbers.
+
+-   Inferential statistics aim at [generalizing]{style="color:#FF4444"} observations made on a sample to a whole population.
+:::
+:::
+
+## Biomedical Data {.scrollable}
+
+The data may include:
+
+-   [administrative]{style="color:#F0FFFF"} health data (data generated through the routine administration of healthcare programs)
+-   [biomarker]{style="color:#F0FFFF"} data (e.g., metabolomics)
+-   [biometric]{style="color:#F0FFFF"} data (e.g., data from wearable technologies)
+-   [images]{style="color:#F0FFFF"} etc.
+
+These data may originate from many different sources, including [electronic health records (EHRs), clinical registries, biobanks, the internet and patient self-reports]{style="color:#F0FFFF"}.
+
+
+## From Data to Knowledge
+
+Biomedical data can be transformed into [information]{style="color:#F0FFFF"}. This information can become [knowledge]{style="color:#F0FFFF"} if the researchers and clinicians understand it.
+
+![](images_slides/info.png)
+
+## Data structures{.scrollable}
+
+There are three main data structures:
+
+-   [Structured]{style="color:#F0FFFF"} data is generally tabular data that is represented by [columns]{style="color:#FF4444"} and [rows]{style="color:#FF4444"} in a database.
+
+-   [Semi-Structured]{style="color:#F0FFFF"} data is a form of structured data that does not obey the tabular structure, yet does have some structural properties (e.g., emails).
+
+-   [Unstructured]{style="color:#F0FFFF"} data usually open text (such as social media posts), images, videos, etc., that have [no predetermined organization or design]{style="color:#FF4444"}.
+
+
+![](images_slides/tweet.png){fig-align="center"}
+
+
+<br>
+
+In this course we use data organized in a [structured format (spreadsheets)]{style="color:#F0FFFF"}. In statistics, tabular data refers to data that are organized in a table with rows and columns. A [row]{style="color:#FF4444"} is a observation (or record), which corresponds to the statistical unit of the dataset. The [columns]{style="color:#FF4444"} are the variables (or characteristics) of interest.
+![](images_slides/dat.png){fig-align="center"}
+
+
+## Variables
+
+::: {.callout-tip icon="false"}
+## Variable
+
+A [variable]{style="color:#F0FFFF"} is a quantity or property that is free to vary, or take on different values. To gain information on a variable, it is necessary to design and conduct experiments.
+:::
+
+::: incremental
+-   An [independent]{style="color:#F0FFFF"} variable is the variable that is [changed]{style="color:#FF4444"} or [controlled]{style="color:#FF4444"} in a scientific experiment to test the effects on another variable.
+
+-   A [dependent (outcome)]{style="color:#F0FFFF"} variable is [the variable being tested]{style="color:#FF4444"} in a scientific experiment and is affected by at least one independent variable.
+:::
+
+
+## Example 1
+
+Suppose an investigator is examining whether hepatitis B antigen affects liver function test results.
+
+::: incremental
+-   [**Independent variable**]{style="color:#F0FFFF"} of interest: the presence or absence of the hepatitis B antigen
+
+-   [**Dependent variable**]{style="color:#F0FFFF"}: the liver function test result, as it is affected by hepatitis B antigen.
+:::
+
+## Example 2 {.scrollable}
+
+An investigator is studying the effectiveness of a newly developed medicine to treat constipation. The treatment group receives the new medication and the control group receives a placebo. The investigator measures the number of days between taking the drug and the first bowel movement among participants in both control and treatment groups.
+
+-   [**Independent variable**]{style="color:#F0FFFF"} of interest: the group assignment---treatment or control---is the independent variable because it is manipulated by the investigator and it affects the length of time until the first bowel movement.
+
+-   [**Dependent variable**]{style="color:#F0FFFF"}: the number of days until the first bowel movement is the dependent variable because it is affected by the group assignment or whether the participant received the new drug or the placebo.
+
+## Types of Data in Variables
+
+Data in variable can be either [categorical]{style="color:#FF4444"} or [numerical]{style="color:#FF4444"} (otherwise known as qualitative and quantitative) in nature:
+
+![](images_slides/types.png){fig-align="center"}
+
+## Categorical Data {.scrollable}
+
+[**A. Nominal Data**]{style="color:#F0FFFF"}
+
+Nominal categorical data are data that one can name and put into categories. They are not measured but simply counted. They often consist of **unordered** observations which have two categories and are often know as **binary**. For example: [dead or alive; cured or not cured; pregnant or not pregnant]{style="color:#FF4444"}.
+
+However, nominal categorical data often can have **more than two categories**, for example, [blood group A, B, AB, O; country of origin; ethnic group; eye color]{style="color:#FF4444"}.
+
+::: callout-important
+## Numerical representation of categories are just codes
+
+We can denote a male and female as 1 and 2 for gender and denote A, B, AB and O, as 1, 2, 3, and 4 for blood type. Unlike numerical data, the numbers representing different categories **do not have mathematical meaning** (they are just codes).
+:::
+
+<br>
+
+[**Β. Ordinal Data**]{style="color:#F0FFFF"}
+
+If there are more than two categories of classification it may be possible to **order** them in some way. For example, [after treatment a patient may be either improved, the same or worse]{style="color:#FF4444"}.
+
+Another example of an ordinal variable is the variable [pain]{style="color:#FF4444"} where a subject is asked to describe the pain verbally as [minimal, moderate, severe, or unbearable]{style="color:#FF4444"}.
+
+::: callout-important
+## Collapsion of categories leads to a loss of information
+
+Ordinal data are often reduced to two categories to simplify analysis and presentation, which may result in a **considerable loss of information**.
+:::
+
+## Numerical Data {.scrollable}
+
+[**A. Discrete (or count) Data**]{style="color:#F0FFFF"}
+
+Counts can only be a whole number or integer value, for example, [the number of children: 0, 1, 2, 3, etc]{style="color:#FF4444"}.
+
+Other examples are often [counts per unit of time]{style="color:#FF4444"} such as the number of deaths in a hospital per year, the number of visits to the GP in a year, or the number of attacks of asthma a person has per month.
+
+<br>
+
+The difference between discrete data and the ordinal data can be seen by considering an example of each:
+
+::: {.callout-note icon="false"}
+## **Example: Ordinal Vs Discrete data**
+
+***Ordinal categorical:*** Stage of breast cancer: I II III IV
+
+***Discrete numerical:*** Number of children: 0 1 2 3 4 5+
+
+We **cannot** say that stage IV is twice as bad as stage II nor that the difference between stages I and II is equivalent to that between stages III and IV. In contrast, three children are three times as many as one, and a difference of one means the same throughout the range of values.
+:::
+
+<br>
+
+[**Β. Continuous (or measured) Data**]{style="color:#F0FFFF"}
+
+Continuous data are measurements with units that can, in theory at least, [take any value within a given range]{style="color:#FF4444"} (they are restricted by the accuracy of the measuring instrument). These data contain the most information, and are the ones most commonly used in statistics. Examples of continuous data are [age, weight, height, SBP, temperature]{style="color:#FF4444"}.
+
+::: callout-important
+## Categorization of numerical data leads to a loss of information
+
+For simplicity, it is often the case in medicine that continuous data are dichotomized to make nominal data. For example, the diastolic blood pressure (DBP), which is continuous, is converted into hypertension (\>90 mmHg) and normotension (≤90 mmHg). There are **two main reasons** for doing this:
+
+(a) It is easier to **describe a population by the proportion** of people affected, for example, the proportion of people in the population with hypertension is 10%.
+
+(b) It helps to **make a decision**: if a person has hypertension, then they will get treatment, and this is easier if high blood pressure has been categorized.
+:::
+
+
+## Question 1
+
+Which are the main branches of statistics?
+
+::: incremental
+
+- [The two branches of statistics are descriptive statistics and inferential statistics.]{style="color:#F0FFFF"}
+
+:::
+
+
+## Question 2
+
+What is the difference between dependent and independent variables?
+
+::: incremental
+
+- [A dependent variable is the variable being tested and measured in a scientific experiment (outcome). An independent variable is the variable that is changed or controlled in a scientific experiment to test the effects on the dependent variable.]{style="color:#F0FFFF"}
+
+:::
+
+
+
+## Question 3
+
+Try to identify the independent and dependent variables in the following example study:
+
+"Examining the difference between paracetamol and aspirin in the relief of pain experienced by migraine sufferers."
+
+::: incremental
+
+- [Independent variable is the type of therapy (paracetamol or aspirin) and dependent variable is measured experience of pain relief.]{style="color:#F0FFFF"}
+
+:::
+
+
+## Question 4
+
+Which of the following is a qualitative nominal variable:
+
+a.  Value of blood pH
+b.  Sensitivity of a diagnostic test (poor, moderate, high)
+c.  Hospitalization expenses in a hospital
+d.  Assignment of a person in one of three groups in a clinical trial
+
+
+::: incremental
+
+- [**d.** Assignment of a person in one of three groups in a clinical trial]{style="color:#F0FFFF"}
+
+:::
+
+
+## Question 5
+
+Which of the following is a quantitative continuous variable:
+
+a.  Number of doctors in a hospital
+b.  An individual's health status (healthy/diseased)
+c.  Blood cholesterol levels (mg/dL)
+d.  Result of a biopsy (positive/negative)
+
+
+::: incremental
+
+- [**c.** Blood cholesterol levels (mg/dL)]{style="color:#F0FFFF"}
+
+:::
+
+
+
+
+
+
+## 
+
+![](images_slides/thank.png)
